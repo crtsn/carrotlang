@@ -1,0 +1,66 @@
+## Selling points:
+- LL(1) or even PEG
+- very verbose, but you could have block/module/function flags to omit some rules
+- Inspired by Pascal, Modula, Oberon, Delphi but not too much:
+    - not many keywords
+    - keywords have one meaning
+    - modules
+    - "do/end" instead of "begin/end"
+    - interface of module should be defined to import module, in same or in separate files
+    - function should be defined before use, to make it recursive or forward declare you should define it in var section; inline should be possible, but it needs multiple passes or storing some kind of state for forward declared functions
+- Most greppable:
+    - only unique names
+        - maybe prefixes for classes and variables
+        - don't allow numbers without underscores, and use numbers as delimiters
+        - don't allow same names but with numbers at the end
+        - rename if encounter dependency with collision, but not in user code
+    - no reserved words with double meanings
+    - passing by reference should be equal to assignment
+    - assigning to struct fields should be equal to struct initialization and also passing of field by reference
+    - it should be easy to find implementation and definition of interfaces
+    - it should be easy to write on keyborrds without special characters
+- no restrictions on folder structure, only on code
+- Dataflow programming
+- No metaprogramming, but good support for code generation (so it is easy to debug)
+- composition like in go so you don't need interfaces with getters/setters
+- optional ; (is it LL(1)?)
+- optional , in structs (is it LL(1)?)
+- compiler should show search paths for modules and for everything
+- extension: .carrot, .crrt, .🥕, or .crt on dos
+- multiline comments (is it LL(1)?)
+- multiline strings with possibility to ignore alignment
+- C FFI
+- C++ FFI
+- Rust FFI
+- no build system, add convenient ways to add other language dependencies
+- it would be funny to have --too-anal or --non-anal modes for compiler to be restrictive/less restrictive
+- built-in RAII or simply deffer? but probably should be written more structural as if it was a pascal, like var blocks probably?
+- memory safe? it would be nice, but I might be too stupid to implement it. defienetly withour gc but with custom memory managers
+- no corrutines, async because it is too implicit, or it should generate code
+- threads? they should be availible, but only if platform supports them; replace with async code if not
+- vectors with simd if supported in std lib
+- you could modify generated code and compiler should keep it in sync or modify code in place if it is configured this way
+- no implicit stdlib, it should suggest symbols from it when not found
+- delphi strings by default, you could have platform dependent strings also (wide strings, pure c strings)
+- no exceptions, unwraps or panics, if you want to suppress error, you should process it or pass above? maybe this idea is stupid, will recheck
+- instead of result variable, functions should have named results like in go
+
+## Would be cool to have (but only after implementing most of the lang)
+- crossplatform graphics in stdlib:
+    - gpu rendering (something like macroquad with opengl es 2, webgl)
+    - cpu rendering
+    - having native interfaces would be awesome
+- visual app editor like delphi
+- many builtin widgets, based on gtk ones
+- if drawing own gui it should have themes for different oses
+- native widgets?
+- target platforms:
+   - browsers
+   - linux (x11, wayland, gtk, qt)
+     - something like steam deck
+   - osx (intel/arm)
+   - windows (>=xp)
+   - android (>=4)
+   - ios (well, unknown version)
+   - wasm?
+- something like python's turtle or scratch to learn basic concepts (rustlings or vimtutor is interesting, could be like this)
