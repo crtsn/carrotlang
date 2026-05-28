@@ -7,6 +7,7 @@
     - modules
     - "do/end" instead of "begin/end"
     - interface of module should be defined to import module, in same or in separate files
+        - NEVER, NEVER allow to export * or full directory, add codegeneration tools for that if needed with ability to re-generate part of files
     - function should be defined before use, to make it recursive or forward declare you should define it in var section; inline should be possible, but it needs multiple passes or storing some kind of state for forward declared functions
 - Most greppable:
     - only unique names
